@@ -5,25 +5,23 @@
 
 # Example only - Replace with your own data model:
 
-type Profile {
-  id: ID! @unique
-  gcID: String! @unique
-  name: String!
-  email: String! @unique
-  mobilePhone: String
-  officePhone: String
-  address: Address @relation(name:"Resident", onDelete: CASCADE)
-  titleEn: String
-  titleFr: String
-  supervisor: Profile @relation(name:"Employees")
+enum AppType {
+  Web,
+  Desktop,
+  Unknown
 }
 
-type Address {
-  id: ID! @unique
-  streetAddress: String!
-  city: String!
-  province: String!
-  postalCode: String!
-  country: String!
-  resident: Profile! @relation(name:"Resident")
+type Feedback {
+  id: ID! @id
+  email: String
+  comment: String!
+  created: String!
+  app: App!
+}
+
+type App{
+  id: ID! @id
+  name: String! @unique
+  type: AppType!
+  feedback: [Feedback!] @relation(link:TABLE)
 }

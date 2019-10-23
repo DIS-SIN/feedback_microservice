@@ -5,48 +5,32 @@ directive @isAuthenticated on OBJECT | FIELD_DEFINITION
 
 # Examples only.. do not use and replace with your own types.
 type Query {
-  profiles(gcID: String, name: String, email: String, mobilephone: String, officePhone: String , titleEn: String, titleFr: String, skip: Int, first: Int): [Profile!]!,
-  addresses(id: ID, streetAddress: String, city: String, province: String, postalCode: String, country: String, skip: Int, first: Int): [Address!]!,
+  feedback(appID: ID, feedbackID: ID, skip: Int, first: Int): [Feedback!]!,
+  applications(appID: ID, skip:Int, first:Int): [App]!  
 }
 
 type Mutation {
-  createProfile(gcID: String!, name: String!, email: String!, avatar: String, titleEn: String, titleFr: String, mobilePhone: String, officePhone: String, address: AddressInput, supervisor: SupervisorInput): Profile!
-  modifyProfile(gcID: String!, data: ModifyProfileInput): Profile!
-  deleteProfile(gcID: String!): Boolean! 
+  createFeedback(appID: ID!,email: String, comment: String!): Feedback!,
+  createApp(name:String!, type:AppType!): App!,
 }
 
-type Profile {
-  gcID: String! 
-  name: String! 
-  email: Email! 
-  mobilePhone: PhoneNumber 
-  officePhone: PhoneNumber
-  address: Address
-  titleEn: String 
-  titleFr: String 
-  supervisor: Profile 
-  team: Team     
+enum AppType {
+  Web,
+  Desktop,
+  Unknown
 }
 
-input SupervisorInput {
-  gcID: String,
-  email: Email
-}
-input AddressInput {
-  streetAddress: String
-  city: String
-  province: String
-  postalCode: PostalCode
-  country: String
+type Feedback {
+  id: ID!
+  email: String
+  comment: String!
+  app: App!
+  created: String!
 }
 
-input ModifyProfileInput {
-  name: String
-  email: Email
-  mobilePhone: String
-  officePhone: String
-  address: AddressInput
-  titleEn: String
-  titleFr: String
-  supervisor: SupervisorInput 
+type App{
+  id: ID!
+  name: String!
+  type: AppType!
+  feedback: [Feedback!]
 }
