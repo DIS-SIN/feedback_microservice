@@ -11,6 +11,8 @@
     "dev": "PRISMA_API_ENDPOINT=localhost yarn prisma deploy && NODE_ENV=development node src/index.js",
     "deploy-dev": "env-cmd -e development yarn prisma deploy",
     "deploy-prod": "env-cmd -e production yarn prisma deploy",
+    "prisma-admin-prod": "env-cmd -e production yarn prisma token",
+    "prisma-admin-dev": "env-cmd -e development yarn prisma token",
     "eslint": "eslint src/",
     "test": "PRISMA_API_ENDPOINT=localhost yarn prisma deploy && NODE_ENV=development jest --runInBand --coverage"
   },
