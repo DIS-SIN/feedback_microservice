@@ -39,7 +39,7 @@ const server = new ApolloServer({
     ...req,    
     prisma: new Prisma({
       typeDefs: "./src/generated/prisma.graphql",
-      endpoint: "http://"+config.prisma.host,
+      endpoint: config.prisma.host,
       secret: process.env.PRISMA_SERVICE_SECRET,
       debug: config.prisma.debug,
     }),
