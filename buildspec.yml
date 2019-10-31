@@ -16,8 +16,7 @@ phases:
     runtime-versions:
       nodejs: 10
       # name: version
-    commands:
-      - yarn install
+    # commands:
       # - command
   #pre_build:
     #commands:
@@ -25,7 +24,7 @@ phases:
       # - command
   build:
     commands:
-      - yarn build
+      - yarn install
       # - command
   #post_build:
     #commands:
