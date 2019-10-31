@@ -4,7 +4,7 @@ const env = process.env.NODE_ENV ? process.env.NODE_ENV : "production";
 
 // Get app basic config settings for Prisma
 const appName = process.env.APP_NAME;
-const prodHost =  process.env.PRISMA_PROD_HOST
+const prismaHost =  process.env.PRISMA_HOST
 
 
 // OpenID provider clientID and Secret
@@ -22,7 +22,7 @@ const development = {
    tracing: true
  },
  prisma: {
-     host:"localhost/" + appName + "/dev:4466",
+     host:prismaHost + "/" + appName + "/dev",
      debug: true
  },
  rabbitMQ:{
