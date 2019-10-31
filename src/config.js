@@ -1,6 +1,6 @@
 require("dotenv").config();
 // set runtime environment as'development' or 'production'
-const env = process.env.NODE_ENV ? process.env.NODE_ENV : "production"; 
+const env = process.env.NODE_ENV; 
 
 // Get app basic config settings for Prisma
 const appName = process.env.APP_NAME;
@@ -44,7 +44,7 @@ const production = {
    tracing: false
  },
  prisma: {
-     host: prodHost + "/" + appName + "/prod",
+     host: prismaHost + "/" + appName + "/prod",
      debug: false
  },
 rabbitMQ:{
