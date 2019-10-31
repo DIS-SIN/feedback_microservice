@@ -2,6 +2,7 @@
 
 endpoint: http://${env:PRISMA_API_ENDPOINT}:4466
 datamodel: datamodel.graphql
+secret: ${PRISMA_SERVICE_SECRET}
 generate:
   - generator: graphql-schema
     output: ../src/generated/prisma.graphql

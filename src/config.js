@@ -2,6 +2,11 @@ require("dotenv").config();
 // set runtime environment as'development' or 'production'
 const env = process.env.NODE_ENV; 
 
+// Get app basic config settings for Prisma
+const appName = process.env.APP_NAME;
+const prodHost =  process.env.PRISMA_PROD_HOST
+
+
 // OpenID provider clientID and Secret
 const clientId = process.env.client_id;
 const clientSecret = process.env.client_secret;
@@ -17,7 +22,7 @@ const development = {
    tracing: true
  },
  prisma: {
-     host:"localhost",
+     host:"localhost/" + appName + "/dev:4466",
      debug: true
  },
  rabbitMQ:{
@@ -39,7 +44,7 @@ const production = {
    tracing: false
  },
  prisma: {
-     host: "prisma",
+     host: prodHost + "/" + appName + "/prod",
      debug: false
  },
 rabbitMQ:{
