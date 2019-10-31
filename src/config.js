@@ -1,6 +1,6 @@
 require("dotenv").config();
 // set runtime environment as'development' or 'production'
-const env = process.env.NODE_ENV; 
+const env = process.env.NODE_ENV ? process.env.NODE_ENV : production; 
 
 // Get app basic config settings for Prisma
 const appName = process.env.APP_NAME;
