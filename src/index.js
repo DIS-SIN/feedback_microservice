@@ -32,7 +32,9 @@ const schema = makeExecutableSchema({
 
 const server = new ApolloServer({
   schema,
-  tracing: config.app.tracing, 
+  tracing: config.app.tracing,
+  introspection: true,
+  playground: true, 
   context: async (req) => ({
     ...req,    
     prisma: new Prisma({
