@@ -4,12 +4,12 @@ const env = process.env.NODE_ENV;
 
 // Get app basic config settings for Prisma
 const appName = process.env.APP_NAME;
-const prismaHost =  process.env.PRISMA_HOST
+const prismaHost =  process.env.PRISMA_HOST;
 
 
 // OpenID provider clientID and Secret
-const clientId = process.env.client_id;
-const clientSecret = process.env.client_secret;
+const clientId = process.env.CLIENT_ID;
+const clientSecret = process.env.CLIENT_SECRET;
 
 // Message queue username and password
 const mqUser = process.env.MQ_USER;
@@ -31,7 +31,7 @@ const development = {
    password: mqPass
  },
  openId:{
-   url:"http://localhost:8000",
+   url:"https://account.da-an.ca",
    id:clientId,
    secret:clientSecret
  },
@@ -48,12 +48,12 @@ const production = {
      debug: false
  },
 rabbitMQ:{
-  host:"mq.gccollab.ca",
+  host:"localhost",
   user: mqUser,
   password: mqPass
 },
 openId:{
-  url:"https://account.gccollab.ca",
+  url:"https://account.da-an.ca",
   id:clientId,
   secret:clientSecret
 },
