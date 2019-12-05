@@ -5,13 +5,12 @@ directive @isAuthenticated on OBJECT | FIELD_DEFINITION
 
 # Examples only.. do not use and replace with your own types.
 type Query {
-  feedback(appID: ID, feedbackID: ID, skip: Int, first: Int): [Feedback!]!,
+  feedback(appID: ID, feedbackID: ID, skip: Int, first: Int): [Feedback!]! @isAuthenticated,
   applications(appID: ID, skip:Int, first:Int): [App]!  
 }
 
 type Mutation {
   createFeedback(appID: ID!,email: String, comment: String!): Feedback!,
-  createApp(name:String!, type:AppType!): App!,
 }
 
 enum AppType {
