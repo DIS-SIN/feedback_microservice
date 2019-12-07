@@ -32,5 +32,5 @@ const { UserInputError } = require("apollo-server");
 // Export the functions below to be included through client facing graphQL interface
 
 module.exports = {
-    createFeedback
+    createFeedback,
 };
