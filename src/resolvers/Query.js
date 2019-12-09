@@ -17,9 +17,12 @@ async function feedback(_, args, context, info){
             id: copyValueToObjectIfDefined(args.feedbackID),
             app:{
                 id: copyValueToObjectIfDefined(args.appID)
-            }
-        }
-    }, info)
+            }    
+        },
+        skip: copyValueToObjectIfDefined(args.skip),
+        first: copyValueToObjectIfDefined(args.first),
+        orderBy: args.orderBy
+    }, info);
 }
 
 

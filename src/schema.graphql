@@ -3,9 +3,17 @@
 # The access token passed must be valid in order to proceed.
 directive @isAuthenticated on OBJECT | FIELD_DEFINITION
 
+# Enum to help order feedaback
+enum orderFeedbackBy {
+  id_ASC
+  id_DESC
+  created_ASC
+  created_DESC
+
+}
 # Examples only.. do not use and replace with your own types.
 type Query {
-  feedback(appID: ID, feedbackID: ID, skip: Int, first: Int): [Feedback!]! @isAuthenticated,
+  feedback(appID: ID, feedbackID: ID, orderBy: orderFeedbackBy, skip: Int, first: Int): [Feedback!]! @isAuthenticated,
   applications(appID: ID, skip:Int, first:Int): [App]!  
 }
 
