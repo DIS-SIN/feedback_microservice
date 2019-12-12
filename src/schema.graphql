@@ -18,7 +18,7 @@ type Query {
 }
 
 type Mutation {
-  createFeedback(appID: ID!,email: String, comment: String!): Feedback!,
+  createFeedback(appID: ID!,email: String, comment: String!, token: String): Feedback!,
 }
 
 enum AppType {
@@ -33,6 +33,7 @@ type Feedback {
   comment: String!
   app: App!
   created: String!
+  botScore: Float!
 }
 
 type App{

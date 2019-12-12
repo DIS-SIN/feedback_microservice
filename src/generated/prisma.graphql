@@ -164,6 +164,7 @@ type Feedback {
   email: String
   comment: String!
   created: String!
+  botScore: Float!
   app: App!
 }
 
@@ -178,6 +179,7 @@ input FeedbackCreateInput {
   email: String
   comment: String!
   created: String!
+  botScore: Float!
   app: AppCreateOneWithoutFeedbackInput!
 }
 
@@ -191,6 +193,7 @@ input FeedbackCreateWithoutAppInput {
   email: String
   comment: String!
   created: String!
+  botScore: Float!
 }
 
 type FeedbackEdge {
@@ -207,6 +210,8 @@ enum FeedbackOrderByInput {
   comment_DESC
   created_ASC
   created_DESC
+  botScore_ASC
+  botScore_DESC
 }
 
 type FeedbackPreviousValues {
@@ -214,6 +219,7 @@ type FeedbackPreviousValues {
   email: String
   comment: String!
   created: String!
+  botScore: Float!
 }
 
 input FeedbackScalarWhereInput {
@@ -273,6 +279,14 @@ input FeedbackScalarWhereInput {
   created_not_starts_with: String
   created_ends_with: String
   created_not_ends_with: String
+  botScore: Float
+  botScore_not: Float
+  botScore_in: [Float!]
+  botScore_not_in: [Float!]
+  botScore_lt: Float
+  botScore_lte: Float
+  botScore_gt: Float
+  botScore_gte: Float
   AND: [FeedbackScalarWhereInput!]
   OR: [FeedbackScalarWhereInput!]
   NOT: [FeedbackScalarWhereInput!]
@@ -300,6 +314,7 @@ input FeedbackUpdateInput {
   email: String
   comment: String
   created: String
+  botScore: Float
   app: AppUpdateOneRequiredWithoutFeedbackInput
 }
 
@@ -307,12 +322,14 @@ input FeedbackUpdateManyDataInput {
   email: String
   comment: String
   created: String
+  botScore: Float
 }
 
 input FeedbackUpdateManyMutationInput {
   email: String
   comment: String
   created: String
+  botScore: Float
 }
 
 input FeedbackUpdateManyWithoutAppInput {
@@ -336,6 +353,7 @@ input FeedbackUpdateWithoutAppDataInput {
   email: String
   comment: String
   created: String
+  botScore: Float
 }
 
 input FeedbackUpdateWithWhereUniqueWithoutAppInput {
@@ -406,6 +424,14 @@ input FeedbackWhereInput {
   created_not_starts_with: String
   created_ends_with: String
   created_not_ends_with: String
+  botScore: Float
+  botScore_not: Float
+  botScore_in: [Float!]
+  botScore_not_in: [Float!]
+  botScore_lt: Float
+  botScore_lte: Float
+  botScore_gt: Float
+  botScore_gte: Float
   app: AppWhereInput
   AND: [FeedbackWhereInput!]
   OR: [FeedbackWhereInput!]

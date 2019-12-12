@@ -15,11 +15,19 @@ const clientSecret = process.env.CLIENT_SECRET;
 const mqUser = process.env.MQ_USER;
 const mqPass = process.env.MQ_PASS;
 
+// Recaptcha v3 info
+const recaptchaURL = process.env.RECAPTCHA_URL;
+const recaptchaSecret = process.env.RECAPTCHA_SECRET;
+
 const development = {
  app: {
    port: 4000,
    multicore: false,
    tracing: true
+ },
+ recaptcha: {
+   url: recaptchaURL,
+   secret: recaptchaSecret
  },
  prisma: {
      host:prismaHost + "/" + appName + "/dev",
@@ -43,6 +51,10 @@ const production = {
    multicore: true,
    tracing: false
  },
+ recaptcha: {
+  url: recaptchaURL,
+  secret: recaptchaSecret
+},
  prisma: {
      host: prismaHost + "/" + appName + "/prod",
      debug: false

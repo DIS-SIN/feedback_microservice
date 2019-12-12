@@ -1,5 +1,6 @@
 const {copyValueToObjectIfDefined, propertyExists} = require("./helper/objectHelper");
 const { UserInputError } = require("apollo-server");
+const { verifyToken } = require("../Auth/recaptchaVerification");
 
 
 // Mutation functions get listed below
@@ -11,20 +12,29 @@ const { UserInputError } = require("apollo-server");
          }
      }, info);
  }
- async function createFeedback(_, args, context, info){
-    return await context.prisma.mutation.createFeedback({
-         data:{
-             email: copyValueToObjectIfDefined(args.email),
-             comment: args.comment,
-             app:{
-                 connect:{
-                     id: args.appID
-                 }
-             },
-             created: await new Date().toString()
-         }
-     }, info);
+ async function createFeedback(_, args, context, info) {
+   const recaptcha = await verifyToken(args.token);
+   if (!recaptcha.success) {
+     recaptcha.score = 0;
+   }
+   return await context.prisma.mutation.createFeedback(
+     {
+       data: {
+         email: copyValueToObjectIfDefined(args.email),
+         comment: args.comment,
+         app: {
+           connect: {
+             id: args.appID
+           }
+         },
+         created: await new Date().toString(),
+         botScore: recaptcha.score
+       }
+     },
+     info
+   );
  }
+
 
 
 

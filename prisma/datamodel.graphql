@@ -16,6 +16,7 @@ type Feedback {
   email: String
   comment: String!
   created: String!
+  botScore: Float!
   app: App!
 }
 
