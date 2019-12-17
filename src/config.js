@@ -60,7 +60,7 @@ const production = {
      debug: false
  },
 rabbitMQ:{
-  host:"localhost",
+  host:"quantum-mq.da-an.ca",
   user: mqUser,
   password: mqPass
 },
